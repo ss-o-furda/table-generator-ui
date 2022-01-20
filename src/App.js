@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import styles from "./App.module.scss";
 import routes from "./routes";
 const Header = lazy(() => import("./components/Header"));
+const SignIn = lazy(() => import("./pages/public/SignIn"));
+const SignUp = lazy(() => import("./pages/public/SignUp"));
 
 const App = () => {
   return (
@@ -11,13 +13,14 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route path={routes.generate} component={null} />
-            <Route path={routes.pricing} component={null} />
-            <Route path={routes.about} component={null} />
-            <Route path={routes.profile} component={null} />
-            <Route path={routes.dashboard} component={null} />
-            <Route path={routes.main} component={null} />
-            <Route path="*" element={<Navigate to={routes.main} />} />
+            <Route path={routes.signin} element={<SignIn />} />
+            <Route path={routes.signup} element={<SignUp />} />
+            <Route path={routes.generate} element={null} />
+            <Route path={routes.pricing} element={null} />
+            <Route path={routes.about} element={null} />
+            <Route path={routes.profile} element={null} />
+            <Route path={routes.dashboard} element={null} />
+            <Route path="*" element={<Navigate to={routes.signin} />} />
           </Routes>
         </BrowserRouter>
       </div>
